@@ -14,7 +14,6 @@ const MyDatagridRow = (props) => {
 		selected,
 		basePath,
 	} = props;
-
 	return (
 		<TableRow key={id}>
 			<TableCell padding='none'>
