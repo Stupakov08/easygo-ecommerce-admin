@@ -8,6 +8,7 @@
 		"@testing-library/user-event": "^7.1.2",
 		"fingerprintjs2": "^2.1.0",
 		"jsonwebtoken": "^8.5.1",
+		"jwt-decode": "^2.2.0",
 		"ra-data-json-server": "^3.5.1",
 		"react": "^16.13.1",
 		"react-admin": "^3.5.1",

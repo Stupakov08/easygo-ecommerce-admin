@@ -1,5 +1,5 @@
 import { getFingerprint } from './utils/getFingerPrint';
-const jwt = require('jsonwebtoken');
+import decodeJwt from 'jwt-decode';
 
 const authProvider = {
 	login: async ({ username, password, passwordconf }) => {
@@ -22,11 +22,17 @@ const authProvider = {
 				return response.json();
 			})
 			.then(({ accessToken }) => {
+				const decodedToken = decodeJwt(accessToken);
 				localStorage.setItem('token', accessToken);
+				localStorage.setItem(
+					'permissions',
+					decodedToken.payload.superadmin ? 'superadmin' : ''
+				);
 			});
 	},
 	logout: () => {
 		localStorage.removeItem('token');
+		localStorage.removeItem('permissions');
 		return Promise.resolve();
 	},
 	checkAuth: () => {
@@ -41,7 +47,10 @@ const authProvider = {
 		}
 		return Promise.resolve();
 	},
-	getPermissions: (params) => Promise.resolve(),
+	getPermissions: () => {
+		const role = localStorage.getItem('permissions');
+		return role !== undefined ? Promise.resolve(role) : Promise.reject();
+	},
 };
 
 export default authProvider;

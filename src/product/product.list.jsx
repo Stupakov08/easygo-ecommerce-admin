@@ -10,13 +10,12 @@ import {
 	ShowButton,
 	DeleteButton,
 } from 'react-admin';
-import ProductGrid from './product.grid';
 import { useAuthenticated } from 'react-admin';
 import { Pagination } from 'react-admin';
 import PostBulkActionButtons from './product.bulk';
-import PostFilter from './product.filter';
+import ProductFilter from './product.filter';
 
-const PostPagination = (props) => (
+const ProductPagination = (props) => (
 	<Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />
 );
 
@@ -26,11 +25,11 @@ export const ProductList = (props) => {
 		<List
 			{...props}
 			title='Products'
-			filters={<PostFilter />}
-			pagination={<PostPagination />}
+			filters={<ProductFilter />}
+			pagination={<ProductPagination />}
 			bulkActionButtons={<PostBulkActionButtons />}
 		>
-			<ProductGrid rowClick='show'>
+			<Datagrid rowClick='show'>
 				<ImageField
 					source='images[0].url'
 					label='Image'
@@ -48,7 +47,7 @@ export const ProductList = (props) => {
 				<ShowButton />
 				<EditButton />
 				<DeleteButton undoable={false} />
-			</ProductGrid>
+			</Datagrid>
 		</List>
 	);
 };

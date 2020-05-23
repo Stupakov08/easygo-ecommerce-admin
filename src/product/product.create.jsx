@@ -5,13 +5,6 @@ import {
 	SimpleForm,
 	TextInput,
 	ImageField,
-	DateInput,
-	ReferenceManyField,
-	Datagrid,
-	TextField,
-	DateField,
-	EditButton,
-	RichTextField,
 	ImageInput,
 } from 'react-admin';
 
