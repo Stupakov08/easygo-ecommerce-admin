@@ -12,6 +12,12 @@ import {
 	DeleteButton,
 	ImageField,
 	NumberField,
+	ArrayField,
+	Datagrid,
+	SingleFieldList,
+	ChipField,
+	List,
+	SimpleList,
 } from 'react-admin';
 
 const PostShowActions = ({ permissions, basePath, data, resource }) => (
@@ -32,6 +38,11 @@ export const ProductShow = ({ permissions, ...props }) => (
 				options={{ style: 'currency', currency: 'USD' }}
 			/>
 			<RichTextField source='description' />
+			<ArrayField source='categories' className={'pointerOff'}>
+				<SingleFieldList>
+					<ChipField source='title' click />
+				</SingleFieldList>
+			</ArrayField>
 			<ImageField source='images' src='url' title='images' />
 			<DateField label='Publication date' source='createdAt' />
 			<DateField label='Publication date' source='updatedAt' />

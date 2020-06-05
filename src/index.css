@@ -47,3 +47,6 @@ code {
 	border-radius: 3px;
 	border: 2px dashed #ccc;
 }
+.pointerOff a {
+	pointer-events: none !important;
+}

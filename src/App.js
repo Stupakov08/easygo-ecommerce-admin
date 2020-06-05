@@ -3,18 +3,22 @@ import { Admin, Resource, ListGuesser } from 'react-admin';
 import ProductList from './product/product.list';
 import AdminUserList from './adminuser/adminuser.list';
 import UserList from './users/user.list';
+import CategoryList from './categories/categories.list';
 import authProvider from './authProvider';
 import MyLoginPage from './pages/login/login';
 import ProductShow from './product/product.shows';
 import ProductCreate from './product/product.create';
+import CategoryCreate from './categories/category.create';
 import AdminCreate from './adminuser/adminuser.create';
 import ProductEdit from './product/product.edit';
 import UserAdminEdit from './adminuser/adminuser.edit';
+import CategoryEdit from './categories/category.edit';
 import dataProvider from './dataProvider';
 import UserIcon from '@material-ui/icons/People';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import CategoryIcon from '@material-ui/icons/Category';
+import DashBoardIcon from '@material-ui/icons/Dashboard';
 
 const App = () => (
 	<Admin
@@ -25,10 +29,18 @@ const App = () => (
 		{(permissions) => {
 			return [
 				<Resource
+					name='dashboard'
+					icon={DashBoardIcon}
+					options={{ label: 'Dashboard' }}
+					list={UserList}
+				/>,
+				<Resource
 					name='categories'
 					icon={CategoryIcon}
 					options={{ label: 'Categories' }}
-					list={UserList}
+					create={CategoryCreate}
+					list={CategoryList}
+					edit={CategoryEdit}
 				/>,
 				<Resource
 					name='products'
