@@ -28,6 +28,7 @@ export const ProductList = (props) => {
 			filters={<ProductFilter />}
 			pagination={<ProductPagination />}
 			bulkActionButtons={<PostBulkActionButtons />}
+			sort={{ field: 'createdAt', order: 'DESC' }}
 		>
 			<Datagrid rowClick='show'>
 				<ImageField

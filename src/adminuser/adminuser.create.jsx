@@ -13,7 +13,7 @@ export const AdminCreate = (props) => (
 			<TextInput source='email' />
 			<BooleanInput source='superadmin' />
 			<PasswordInput source='password' />
-			<PasswordInput source='passwordconf' />
+			<PasswordInput label={'Confirm password'} source='passwordconf' />
 		</SimpleForm>
 	</Create>
 );

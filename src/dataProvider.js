@@ -19,15 +19,9 @@ const myDataProvider = {
 	...dataProvider,
 	create: (resource, params) => {
 		if (resource !== 'products' || !params.data.images) {
-			// fallback to the default implementation
 			return dataProvider.create(resource, params);
 		}
-		/**
-		 * For posts update only, convert uploaded image in base 64 and attach it to
-		 * the `picture` sent property, with `src` and `title` attributes.
-		 */
 
-		// Freshly dropped pictures are File objects and must be converted to base64 strings
 		const newPictures = params.data.images.filter(
 			(p) => p.rawFile instanceof File
 		);
@@ -45,15 +39,9 @@ const myDataProvider = {
 	},
 	update: (resource, params) => {
 		if (resource !== 'products' || !params.data.images) {
-			// fallback to the default implementation
 			return dataProvider.update(resource, params);
 		}
-		/**
-		 * For posts update only, convert uploaded image in base 64 and attach it to
-		 * the `picture` sent property, with `src` and `title` attributes.
-		 */
 
-		// Freshly dropped pictures are File objects and must be converted to base64 strings
 		const newPictures = params.data.images.filter(
 			(p) => p.rawFile instanceof File
 		);
@@ -71,6 +59,29 @@ const myDataProvider = {
 				});
 			}
 		);
+	},
+	getOne: async (resource, params) => {
+		debugger;
+		if (resource === 'chart') {
+			let chart;
+			try {
+				debugger;
+				chart = await httpClient('http://localhost:8000/api/chart');
+				if (chart) {
+					return Promise.resolve({
+						data: chart.json,
+					});
+				}
+			} catch (e) {
+				return Promise.reject({
+					data: e,
+				});
+			}
+			return Promise.resolve({
+				data: { id: params.id, nickname: '' },
+			});
+		}
+		return dataProvider.getOne(resource, params);
 	},
 };
 const convertFileToBase64 = (file) =>

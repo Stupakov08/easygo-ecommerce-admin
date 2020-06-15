@@ -50,3 +50,6 @@ code {
 .pointerOff a {
 	pointer-events: none !important;
 }
+.no-wrap {
+	white-space: nowrap;
+}
