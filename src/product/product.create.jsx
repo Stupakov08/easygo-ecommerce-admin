@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
 	Create,
-	Edit,
 	SimpleForm,
 	TextInput,
 	ImageField,
@@ -10,11 +9,6 @@ import {
 	ArrayInput,
 	SimpleFormIterator,
 	AutocompleteInput,
-	ReferenceInput,
-	SelectInput,
-	ReferenceArrayInput,
-	SelectArrayInput,
-	useGetList,
 	useDataProvider,
 	Loading,
 	Error,
@@ -62,7 +56,13 @@ export const ProductCreate = (props) => {
 						/>
 					</SimpleFormIterator>
 				</ArrayInput>
-				<ImageInput source='images' label='Images' accept='image/*' multiple>
+				<ImageInput
+					source='images'
+					label='Images'
+					accept='image/*'
+					multiple
+					className={'image-input-create'}
+				>
 					<ImageField source='images' />
 				</ImageInput>
 			</SimpleForm>

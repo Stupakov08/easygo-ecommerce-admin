@@ -53,3 +53,6 @@ code {
 .no-wrap {
 	white-space: nowrap;
 }
+.category .column-title {
+	width: 100%;
+}

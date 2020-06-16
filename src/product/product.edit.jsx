@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {
-	Create,
 	Edit,
 	SimpleForm,
 	TextInput,
-	DateInput,
-	ReferenceManyField,
-	Datagrid,
 	TextField,
-	DateField,
-	EditButton,
 	ImageField,
 	ImageInput,
 	NumberInput,
 	ArrayInput,
 	SimpleFormIterator,
-	ReferenceArrayInput,
-	SelectArrayInput,
-	SelectInput,
 	AutocompleteInput,
-	ReferenceInput,
-	useGetList,
 	useDataProvider,
 	Loading,
 	Error,
@@ -76,6 +65,7 @@ export const ProductEdit = (props) => {
 					multiple
 					fullWidth
 					className={'image-input-create'}
+					maxSize={15000000}
 				>
 					<ImageField source='url' />
 				</ImageInput>

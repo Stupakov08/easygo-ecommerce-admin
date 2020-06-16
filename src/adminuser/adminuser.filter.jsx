@@ -1,5 +1,5 @@
 import React from 'react';
-import { Create, Edit, SimpleForm, TextInput, Filter } from 'react-admin';
+import { TextInput, Filter } from 'react-admin';
 
 const AdminUserFilter = (props) => (
 	<Filter {...props}>

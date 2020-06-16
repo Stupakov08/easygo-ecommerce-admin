@@ -3,11 +3,8 @@ import {
 	List,
 	Datagrid,
 	TextField,
-	DateField,
-	ReferenceField,
 	ImageField,
 	EditButton,
-	ShowButton,
 	DeleteButton,
 } from 'react-admin';
 import { useAuthenticated } from 'react-admin';
@@ -28,7 +25,12 @@ export const CategoryList = (props) => {
 				pagination={<CategoryPagination />}
 				bulkActionButtons={<CategoryBulkActionButtons />}
 			>
-				<Datagrid>
+				<Datagrid className={'category'}>
+					<ImageField
+						source='image.url'
+						label='Image'
+						className={'image-list'}
+					/>
 					<TextField source='title' />
 					<EditButton />
 					<DeleteButton undoable={false} />

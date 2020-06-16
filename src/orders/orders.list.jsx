@@ -7,7 +7,6 @@ import {
 	BooleanField,
 	EditButton,
 	ShowButton,
-	DeleteButton,
 	FunctionField,
 } from 'react-admin';
 import { useAuthenticated } from 'react-admin';

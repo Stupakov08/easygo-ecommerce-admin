@@ -4,13 +4,7 @@ import {
 	Datagrid,
 	TextField,
 	DateField,
-	ReferenceField,
-	ImageField,
-	EditButton,
-	ShowButton,
-	DeleteButton,
 	BooleanField,
-	NumberField,
 	EmailField,
 } from 'react-admin';
 import { useAuthenticated } from 'react-admin';

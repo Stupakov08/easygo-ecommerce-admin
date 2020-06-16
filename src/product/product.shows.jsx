@@ -5,19 +5,14 @@ import {
 	TextField,
 	DateField,
 	EditButton,
-	TabbedShowLayout,
 	RichTextField,
-	Tab,
 	TopToolbar,
 	DeleteButton,
 	ImageField,
 	NumberField,
 	ArrayField,
-	Datagrid,
 	SingleFieldList,
 	ChipField,
-	List,
-	SimpleList,
 } from 'react-admin';
 
 const PostShowActions = ({ permissions, basePath, data, resource }) => (

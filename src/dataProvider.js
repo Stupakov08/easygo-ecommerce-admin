@@ -18,54 +18,64 @@ export const dataProvider = jsonServerProvider(
 const myDataProvider = {
 	...dataProvider,
 	create: (resource, params) => {
-		if (resource !== 'products' || !params.data.images) {
-			return dataProvider.create(resource, params);
+		debugger;
+		if (params.data.image) {
+			params.data.images = [params.data.image];
+		}
+		if (
+			params.data.images &&
+			(resource === 'products' || resource === 'categories')
+		) {
+			const newPictures = params.data.images.filter(
+				(p) => p.rawFile instanceof File
+			);
+			return Promise.all(newPictures.map(convertFileToBase64)).then(
+				(transformedNewPictures) => {
+					return dataProvider.create(resource, {
+						...params,
+						data: {
+							...params.data,
+							images: [...transformedNewPictures],
+						},
+					});
+				}
+			);
 		}
 
-		const newPictures = params.data.images.filter(
-			(p) => p.rawFile instanceof File
-		);
-		return Promise.all(newPictures.map(convertFileToBase64)).then(
-			(transformedNewPictures) => {
-				return dataProvider.create(resource, {
-					...params,
-					data: {
-						...params.data,
-						images: [...transformedNewPictures],
-					},
-				});
-			}
-		);
+		return dataProvider.create(resource, params);
 	},
 	update: (resource, params) => {
-		if (resource !== 'products' || !params.data.images) {
-			return dataProvider.update(resource, params);
+		if (params.data.image) {
+			params.data.images = [params.data.image];
 		}
-
-		const newPictures = params.data.images.filter(
-			(p) => p.rawFile instanceof File
-		);
-		const formerPictures = params.data.images.filter(
-			(p) => !(p.rawFile instanceof File)
-		);
-		return Promise.all(newPictures.map(convertFileToBase64)).then(
-			(transformedNewPictures) => {
-				return dataProvider.update(resource, {
-					...params,
-					data: {
-						...params.data,
-						images: [...transformedNewPictures, ...formerPictures],
-					},
-				});
-			}
-		);
+		if (
+			params.data.images &&
+			(resource === 'products' || resource === 'categories')
+		) {
+			const newPictures = params.data.images.filter(
+				(p) => p.rawFile instanceof File
+			);
+			const formerPictures = params.data.images.filter(
+				(p) => !(p.rawFile instanceof File)
+			);
+			return Promise.all(newPictures.map(convertFileToBase64)).then(
+				(transformedNewPictures) => {
+					return dataProvider.update(resource, {
+						...params,
+						data: {
+							...params.data,
+							images: [...transformedNewPictures, ...formerPictures],
+						},
+					});
+				}
+			);
+		}
+		return dataProvider.update(resource, params);
 	},
 	getOne: async (resource, params) => {
-		debugger;
 		if (resource === 'chart') {
 			let chart;
 			try {
-				debugger;
 				chart = await httpClient('http://localhost:8000/api/chart');
 				if (chart) {
 					return Promise.resolve({

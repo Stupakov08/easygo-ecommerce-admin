@@ -1,13 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-	Create,
-	Edit,
-	SimpleForm,
-	BooleanInput,
-	useDataProvider,
-	Loading,
-	Error,
-} from 'react-admin';
+import React from 'react';
+import { Edit, SimpleForm, BooleanInput } from 'react-admin';
 
 export const OrdersEdit = (props) => {
 	return (

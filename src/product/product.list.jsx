@@ -4,7 +4,6 @@ import {
 	Datagrid,
 	TextField,
 	DateField,
-	ReferenceField,
 	ImageField,
 	EditButton,
 	ShowButton,
