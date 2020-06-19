@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { useStyles } from './login.styles';
 import { connect } from 'react-redux';
 import { userLogin } from 'react-admin';
-import { fetchUtils } from 'react-admin';
+import { fetchUtils, required } from 'react-admin';
 
 const apiUrl = 'http://localhost:8000/api/admin/';
 const httpClient = fetchUtils.fetchJson;
@@ -74,6 +74,7 @@ const MyLoginPage = ({ theme }) => {
 								autoComplete='email'
 								autoFocus
 								value={email}
+								validate={[required()]}
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<TextField
@@ -86,6 +87,7 @@ const MyLoginPage = ({ theme }) => {
 								id='password'
 								autoComplete='current-password'
 								value={password}
+								validate={[required()]}
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 							{exist === false && (
@@ -98,6 +100,7 @@ const MyLoginPage = ({ theme }) => {
 									type='password'
 									id='passwordconf'
 									value={passwordconf}
+									validate={[required()]}
 									onChange={(e) => setPasswordConf(e.target.value)}
 								/>
 							)}

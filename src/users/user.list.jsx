@@ -19,7 +19,7 @@ const CustomerPagination = (props) => (
 export const UserList = (props) => {
 	useAuthenticated();
 	return (
-		<List {...props} filters={<UserFilter />}>
+		<List {...props} bulkActionButtons={false} filters={<UserFilter />}>
 			<Datagrid rowClick='edit'>
 				<TextField source='name' />
 				<EmailField source='email' />

@@ -12,6 +12,7 @@ import {
 	useDataProvider,
 	Loading,
 	Error,
+	required,
 } from 'react-admin';
 
 export const ProductCreate = (props) => {
@@ -43,11 +44,11 @@ export const ProductCreate = (props) => {
 	return (
 		<Create {...props}>
 			<SimpleForm>
-				<TextInput source='title' />
-				<TextInput source='code' />
-				<TextInput source='description' multiline />
-				<NumberInput source='price' />
-				<ArrayInput source='categories'>
+				<TextInput source='title' validate={[required()]} fullWidth />
+				<TextInput source='code' validate={[required()]} fullWidth />
+				<TextInput source='description' multiline fullWidth />
+				<NumberInput source='price' validate={[required()]} fullWidth />
+				<ArrayInput source='categories' fullWidth>
 					<SimpleFormIterator>
 						<AutocompleteInput
 							source='_id'

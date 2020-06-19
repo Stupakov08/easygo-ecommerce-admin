@@ -1,5 +1,5 @@
 import React from 'react';
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { Admin, Resource } from 'react-admin';
 import ProductList from './product/product.list';
 import AdminUserList from './adminuser/adminuser.list';
 import UserList from './users/user.list';

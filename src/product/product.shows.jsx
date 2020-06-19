@@ -28,10 +28,7 @@ export const ProductShow = ({ permissions, ...props }) => (
 			<TextField source='title' label={' '} style={{ fontSize: '32px' }} />
 			<TextField source='code' />
 			<TextField source='title' />
-			<NumberField
-				source='price'
-				options={{ style: 'currency', currency: 'USD' }}
-			/>
+			<NumberField source='price' />
 			<RichTextField source='description' />
 			<ArrayField source='categories' className={'pointerOff'}>
 				<SingleFieldList>

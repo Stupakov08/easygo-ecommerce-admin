@@ -5,15 +5,21 @@ import {
 	TextInput,
 	BooleanInput,
 	PasswordInput,
+	required,
+	email,
 } from 'react-admin';
 
 export const AdminCreate = (props) => (
 	<Create {...props}>
 		<SimpleForm>
-			<TextInput source='email' />
+			<TextInput source='email' validate={[required(), email()]} />
 			<BooleanInput source='superadmin' />
-			<PasswordInput source='password' />
-			<PasswordInput label={'Confirm password'} source='passwordconf' />
+			<PasswordInput source='password' validate={[required()]} />
+			<PasswordInput
+				label={'Confirm password'}
+				source='passwordconf'
+				validate={[required()]}
+			/>
 		</SimpleForm>
 	</Create>
 );
