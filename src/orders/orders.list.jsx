@@ -18,7 +18,6 @@ const ProductPagination = (props) => (
 );
 
 export const OrdersList = (props) => {
-	debugger;
 	useAuthenticated();
 	return (
 		<List

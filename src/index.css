@@ -56,3 +56,7 @@ code {
 .category .column-title {
 	width: 100%;
 }
+.flex-between {
+	display: flex;
+	justify-content: space-between;
+}

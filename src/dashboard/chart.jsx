@@ -16,7 +16,6 @@ import useStyles from './useStyles';
 export default function Chart({ data = [] }) {
 	const theme = useTheme();
 	const classes = useStyles();
-	debugger;
 	return (
 		<React.Fragment>
 			<Typography variant='h5' className={classes.title}>

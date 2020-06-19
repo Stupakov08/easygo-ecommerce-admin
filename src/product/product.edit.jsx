@@ -23,7 +23,6 @@ export const ProductEdit = (props) => {
 	const [error, setError] = useState();
 
 	useEffect(() => {
-		debugger;
 		dataProvider
 			.getList('categories', {
 				pagination: { page: 1, perPage: 8 },
